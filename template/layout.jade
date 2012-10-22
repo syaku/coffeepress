@@ -1,0 +1,42 @@
+!!! 5
+meta(charset="utf-8")
+html(lang="ja")
+  head
+    if (typeof(article) == 'undefined')
+      title!= site.title
+    else
+      title #{article.title} - #{site.title}
+    link(rel="alternate", type="application/rss+xml", title="RSS2.0", href="/feed.rss")
+    meta(name="viewport", content="width=device-width,initial-scale=1.0")
+    for css in config.css
+      link(href=css, rel="stylesheet")
+  body(data-spy="scroll", data-target=".subnav", data-offset="50")
+    a(href="https://github.com/syaku").visible-desktop
+      img(style="position: fixed; top: 0; right: 0; border: 0;z-index:1050;", src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png", alt="Fork me on GitHub")
+    header.navbar.navbar-fixed-top
+      div.navbar-inner
+        div.container
+          button.btn.btn-navbar(type="button", data-toggle="collapse", data-target=".nav-collapse")
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.brand(href="/")!= config.title 
+          div.nav-collapse.collapse
+            ul.nav
+              for navItem in config.navigation
+                li
+                  a(href=navItem.url)!= navItem.name
+    section.container
+      block page-header
+      section.row.content
+        div.span12
+          block content
+      aside.row
+          include includes/aside
+    footer.navbar.navbar-fixed-bottom
+        div.navbar-inner
+          div.container
+            p.pull-right.navbar-text Powered by 
+              a(href="https://github.com/syaku/coffeepress") Coffeepress 
+    for src in config.script
+      script(src=src)

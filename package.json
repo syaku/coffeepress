@@ -1,0 +1,12 @@
+{
+  "name": "coffeepress"
+  ,"version": "0.0.1"
+  ,"private": true
+  ,"dependencies": {
+    "config": ">= 0.0.1"
+    ,"jade": ">= 0.0.1"
+    ,"node-markdown": ">= 0.0.1"
+    ,"dateformat": ">= 0.0.1"
+    ,"opts": ">= 0.0.1"
+  }
+}

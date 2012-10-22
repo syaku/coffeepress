@@ -1,0 +1,22 @@
+include ../helpers/datetime
+
+article.row-fluid
+  div.span2.date-full.hidden-phone
+    - var fullDateString = dateFormat(article.timestamp, "yyyy-mm-ddTHH:MM:ss");
+    - var dateString = dateFormat(article.timestamp, "yyyy-mm-dd");
+    - var timeString = dateFormat(article.timestamp, "HH:MM:ss");
+    h3
+      time(datetime=fullDateString)
+        p!= dateString
+        p!= timeString
+  div.span10
+    hgroup.row-fluid.page-header
+      h1
+        //zenback_title_begin
+        span!=article.title
+        //zenback_title_end
+    //zenback_body_begin
+    section.row-fluid!= article.content
+    //zenback_body_end
+    aside.row-fluid.hidden-phone
+      include zenback

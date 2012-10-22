@@ -1,0 +1,13 @@
+!!!xml
+rss(version="2.0")
+  channel
+    title!= site.title
+    link!= site.url
+    description!= site.description
+    
+    for item in items
+      item
+        title!= item.title
+        link #{config.url}/#{item.filename}
+        description!= "<![CDATA["+item.description+"]]>"
+        pubDate!= item.pubdate

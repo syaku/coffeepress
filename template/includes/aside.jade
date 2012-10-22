@@ -1,0 +1,30 @@
+include ../helpers/datetime
+
+nav.span4#recentPosts
+  div.paper
+    div
+      hgroup
+        h3 Recent Posts
+      ul.unstyled
+        for recent_post in site.recent_posts
+          - var dateString = dateFormat(recent_post.timestamp, "yyyy-mm-dd");
+          li
+            a(href=recent_post.filename)!= recent_post.title
+            span &nbsp;(#{dateString})
+nav.span4#archives
+  div.paper
+    div
+      hgroup
+        h3 Archives
+      include archives
+address.span4#aboutMe
+  div.paper
+    div
+      hgroup
+        h3 About Me
+      section
+        p
+          img(style="width:100px;height:100px;", src=config.profile.image.url)#profile
+        p#displayName
+          a(href="http://gplus.to/syaku")!= config.profile.displayName
+        p#aboutMe!= config.profile.aboutMe

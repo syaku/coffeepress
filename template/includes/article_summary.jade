@@ -1,0 +1,27 @@
+include ../helpers/datetime
+
+article.row-fluid
+  - var fullDateString = dateFormat(article.timestamp, "yyyy-mm-ddTHH:MM:ss");
+  - var dateString = dateFormat(article.timestamp, "yyyy-mm-dd");
+  - var timeString = dateFormat(article.timestamp, "HH:MM:ss");
+  div.span2.hidden-phone
+    h3
+      time(datetime=fullDateString)
+        p!= dateString
+  div.span10
+    hgroup.row-fluid.page-header
+      - var dateString = dateFormat(article.timestamp, "yyyy-mm-ddTHH:MM:ss");
+      p.visible-phone.calendar!= dateFormat(article.timestamp, "mmm")
+        em!= dateFormat(article.timestamp, "dd")
+      div
+        h2
+          a(href=article.filename)!=article.title
+        p.small.visible-phone
+          time(datetime=fullDateString)!= dateString
+    if (typeof(article.summary) == 'undefined')
+      section.row-fluid.hidden-phone!= article.content
+    else
+      section.row-fluid.hidden-phone
+        div!= article.summary
+        p.more
+          a(href=article.filename) 続きを読む
