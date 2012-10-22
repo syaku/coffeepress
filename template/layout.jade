@@ -2,10 +2,12 @@
 meta(charset="utf-8")
 html(lang="ja")
   head
-    if (typeof(article) == 'undefined')
-      title!= site.title
-    else
+    if (typeof(title) != 'undefined')
+      title #{title} - #{site.title}
+    else if (typeof(article) != 'undefined')
       title #{article.title} - #{site.title}
+    else
+      title!= site.title
     link(rel="alternate", type="application/rss+xml", title="RSS2.0", href="/feed.rss")
     meta(name="viewport", content="width=device-width,initial-scale=1.0")
     for css in config.css

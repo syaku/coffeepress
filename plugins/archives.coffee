@@ -20,6 +20,7 @@ module.exports = (site, config) ->
     fn = jade.compile data, {filename:"#{config.dirs.template}/layout.jade"}
     fs.writeFile "#{config.dirs.public}/#{key}.html",
       fn {
+        title: key
         site: site
         ,key: key
         , config:config
