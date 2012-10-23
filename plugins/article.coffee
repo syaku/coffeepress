@@ -7,14 +7,16 @@ toArticle = (file, dir)->
   array = data.split "\n"
   [title, content] = [array[0], array[1..].join("\n")]
   dirname = path.relative(dir, path.dirname(file))
-  filename = "#{path.join(dirname, path.basename(file, ".md"))}.html"
-  article = {
+  ext = path.extname(file)
+  filename = "#{path.join(dirname, path.basename(file, ext))}.html"
+  article = 
     title:title
-      ,content:content
-      ,filename:filename
-      ,timestamp:mtime
-      ,category: path.dirname filename
-  }
+    content:content
+    filename:filename
+    timestamp:mtime
+    category: path.dirname filename
+    ext: ext
+  
 
 readDir = (articles, dir) ->
   files = fs.readdirSync "#{dir}"
@@ -24,8 +26,7 @@ readDir = (articles, dir) ->
     if stat.isDirectory()
       readDir articles, filepath
     else
-      if path.extname(filepath) == ".md"
-        articles.push toArticle filepath, dir
+      articles.push toArticle filepath, dir
 
 module.exports = (site, config)->
   readDir site.articles, config.dirs.data
