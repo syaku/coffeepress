@@ -1,15 +1,15 @@
 # Coffeepress
-Coffeepress is static HTML generator.
-
-## Feature
-
-* Written by CoffeeScript & Node.js.
-* Expansion by plugins.
-* Supervised and reconstructs automatically. 
+Coffeepress is static HTML Blog engine.
 
 ## Installation
+* Download and extraction tarball.
+* Edit config file.
 
 ## Usage
+### Assets build.
+    > cake assets
+### Update articles.
+    > cake update
 
 ## Thanks
 * Initializr
