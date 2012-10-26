@@ -7,9 +7,14 @@ lib-cov
 *.pid
 *.gz
 
+config/default.coffee
+config/default.json
+
 pids
 logs
 results
 
 node_modules
 npm-debug.log
+
+*~
