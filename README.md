@@ -6,7 +6,7 @@ Coffeepress is static HTML Blog engine.
 * Edit config file.
 
 ## Usage
-### Assets build.
+### Build assets.
     > cake assets
 ### Update articles.
     > cake update
