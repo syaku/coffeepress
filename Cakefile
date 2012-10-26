@@ -37,7 +37,7 @@ task "assets", "Build for assets.", ->
       util.puts "Compile coffee files... Done."
 
 task "update", "Update articles.", ->
-  exec "coffee coffeepress.coffee", (err, stdout, stderr)->
+  exec "coffee coffeepress.coffee -u", (err, stdout, stderr)->
     throw err if err
     console.log stdout+stderr
     util.puts "Update articles... Done."

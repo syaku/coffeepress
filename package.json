@@ -9,4 +9,8 @@
     ,"dateformat": ">= 0.0.1"
     ,"opts": ">= 0.0.1"
   }
+  ,"scripts": {
+    "update": "coffee coffeepress.coffee -u"
+    , "test": ""
+  }
 }

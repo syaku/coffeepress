@@ -11,3 +11,7 @@ Coffeepress is static HTML generator.
 
 ## Usage
 
+## Thanks
+* Initializr
+* Twitter Bootstrap
+* google-code-prettify
