@@ -30,9 +30,9 @@ class ArticlePlugin
       filepath = path.join dir, file
       stat = fs.statSync filepath
       if stat.isDirectory()
-        @readDir articles, filepath
+        readDir articles, filepath
       else
-        articles.push @toArticle filepath, dir
+        articles.push toArticle filepath, dir
 
 module.exports = (site, config)->
   new ArticlePlugin(site, config)
