@@ -11,7 +11,7 @@ Coffeepress is static HTML Blog engine.
 ### Update articles.
     > cake update
 
-## Thanks
+## Include
 * Initializr
 * Twitter Bootstrap
 * google-code-prettify

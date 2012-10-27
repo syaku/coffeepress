@@ -1,0 +1,8 @@
+ul.unstyled
+  -var categories = Object.keys(site.categories);
+  - categories.sort();
+  for category in categories
+    - var label = config.categories.labels[category] ? config.categories.labels[category] : category;
+    li
+      i.icon-tag
+      a(href="#{config.url}/#{category}/")!= label

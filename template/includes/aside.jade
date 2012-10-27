@@ -1,28 +1,35 @@
-include ../helpers/datetime
-
-nav.span4#recentPosts
+nav.span3#recentPosts
   div.paper
     div
       hgroup
-        h3 Recent Posts
-      ul.unstyled
-        for recent_post in site.recent_posts
-          - var dateString = dateFormat(recent_post.timestamp, "yyyy-mm-dd");
-          li
-            a(href=recent_post.filename)!= recent_post.title
-            span &nbsp;(#{dateString})
-nav.span4#archives
+        h2 Recent Posts
+      div.content
+        ul.unstyled
+          for recent_post in site.recent_posts
+            - var dateString = dateFormat(recent_post.timestamp, "yyyy-mm-dd");
+            li
+              i.icon-file
+              a(href="#{config.url}/#{recent_post.filename}")!= recent_post.title
+nav.span3#archives
   div.paper
     div
       hgroup
-        h3 Archives
-      include archives
-address.span4#aboutMe
+        h2 Archives
+      div.content
+        include archives
+nav.span3#categories
   div.paper
     div
       hgroup
-        h3 About Me
-      section
+        h2 Categories
+      div.content
+        include categories
+nav.span3#aboutMe
+  address.paper
+    div
+      hgroup
+        h2 About Me
+      div.content
         p
           img(style="width:100px;height:100px;", src=config.profile.image.url)#profile
         p#displayName

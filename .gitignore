@@ -9,6 +9,7 @@ lib-cov
 
 config/default.coffee
 config/default.json
+config/runtime.json
 
 pids
 logs
@@ -18,3 +19,4 @@ node_modules
 npm-debug.log
 
 *~
+*.swp

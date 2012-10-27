@@ -3,6 +3,7 @@ path = require "path"
 jade = require "jade"
 config = require "config"
 opts = require "opts"
+_ = require "underscore"
 
 class Blog
   constructor: (@config) ->
@@ -14,9 +15,21 @@ class Blog
     }
 
   generate: =>
+    plugins = []
     for pluginFile in @config.plugins
-      plugin = require "#{@config.dirs.plugins}/#{pluginFile}"
-      plugin @site, @config
+      plugins.push require("#{@config.dirs.plugins}/#{pluginFile}")
+
+    # parse
+    for plugin in plugins
+      if _.isFunction plugin
+        plugin @site, @config
+      else if plugin.parse?
+        plugin.parse @site, @config
+
+    # layout
+    for plugin in plugins
+      if plugin.layout?
+        plugin.layout @site, @config
 
 blog = new Blog(config)
 

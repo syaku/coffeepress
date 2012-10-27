@@ -1,5 +1,6 @@
 fs = require "fs"
 path = require "path"
+_ = require "underscore"
 
 class ArticlePlugin
   constructor: (@site, @config)->
@@ -13,15 +14,15 @@ class ArticlePlugin
     {mtime} = fs.statSync "#{file}"
     array = data.split "\n"
     [title, content] = [array[0], array[1..].join("\n")]
-    dirname = path.relative(dir, path.dirname(file))
+    category = path.relative(@config.dirs.data, dir).replace '\\', '/'
     ext = path.extname(file)
-    filename = "#{path.join(dirname, path.basename(file, ext))}.html"
+    filename = "#{path.join(category, path.basename(file, ext))}.html"
     article = 
       title:title
       content:content
       filename:filename
       timestamp:mtime
-      category: path.dirname filename
+      category: category
       ext: ext
 
   readDir:(articles, dir) ->
@@ -32,7 +33,9 @@ class ArticlePlugin
       if stat.isDirectory()
         @readDir articles, filepath
       else
-        articles.push @toArticle filepath, dir
+        ext = path.extname filepath
+        if (_.indexOf @config.ext.data, ext) >= 0
+          articles.push @toArticle filepath, dir
 
 module.exports = (site, config)->
   new ArticlePlugin(site, config)

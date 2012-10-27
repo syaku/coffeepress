@@ -18,9 +18,10 @@ class Layout
       fn = jade.compile data, {filename:"#{@config.dirs.template}/layout.jade"}
       fs.writeFile outFile,
         fn {
+          dateFormat: require "./dateformat"
           site:@site
-          , article: article
-          , config:@config
+          article: article
+          config:@config
         }, (err) ->
         throw err if err
 
@@ -29,11 +30,13 @@ class Layout
       fn = jade.compile data, {filename:"#{@config.dirs.template}/layout.jade"}
       fs.writeFile "#{@config.dirs.public}/index.html",
         fn {
+          dateFormat: require "./dateformat"
           site:@site
-          , config:@config
+          config:@config
         }, (err) ->
         throw err if err
 
-module.exports = (site, config)->
-  new Layout site, config
-  console.log "Layout plugin... Done."
+module.exports = 
+  layout: (site, config)->
+    new Layout site, config
+    console.log "Layout plugin... Done."

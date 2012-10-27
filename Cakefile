@@ -45,6 +45,8 @@ task "assets", "Build for assets.", ->
 
   console.log "Compile less files."
   readDir assets.less, (file)->
+    if path.extname(file) != '.less' then return
+    console.log path.extname(file)
     exec "lessc #{file} > #{config.dirs.public}/css/#{path.basename file, ".less"}.css", (err, stdout, stderr) ->
       throw err if err
       console.log stdout+stderr

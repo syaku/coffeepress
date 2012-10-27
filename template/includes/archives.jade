@@ -1,4 +1,5 @@
 ul.unstyled
   for value, key in site.archives
     li
-      a(href="#{key}.html")!= key
+      i.icon-calendar
+      a(href="#{config.url}/#{key}.html")!= key

@@ -23,10 +23,17 @@ html.no-js("lang-ja")
     meta(name="viewport", content="width=device-width,initial-scale=1.0")
 
     // CSS
-    link(href="css/bootstrap.min.css", rel="stylesheet")
-    link(href="css/bootstrap-responsive.min.css", rel="stylesheet")
-    link(href="css/prettify.css", rel="stylesheet")
-    link(href="css/main.css", rel="stylesheet")
+    link(href="#{config.url}/css/bootstrap.min.css", rel="stylesheet")
+    style
+      @media (min-width: 980px) {
+        body{
+          padding-top:60px;
+          padding-bottom:40px;
+        }
+      }
+    link(href="#{config.url}/css/bootstrap-responsive.min.css", rel="stylesheet")
+    link(href="#{config.url}/css/prettify.css", rel="stylesheet")
+    link(href="#{config.url}/css/main.css", rel="stylesheet")
     for css in config.css
       link(href=css, rel="stylesheet")
 
@@ -42,19 +49,18 @@ html.no-js("lang-ja")
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.brand(href="/")!= config.title 
+          a.brand(href="#{config.url}/")!= config.title 
           div.nav-collapse.collapse
             ul.nav
               for navItem in config.navigation
                 li
                   a(href=navItem.url)!= navItem.name
-    section.container
+    div.container
       block page-header
-      section.row.content
-        div.span12
-          block content
+      block content
       aside.row
-          include includes/aside
+        h2.hide Navigation
+        include includes/aside
     footer.navbar.navbar-fixed-bottom
         div.navbar-inner
           div.container
