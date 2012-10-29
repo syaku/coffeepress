@@ -8,8 +8,9 @@ nav.span3#recentPosts
           for recent_post in site.recent_posts
             - var dateString = dateFormat(recent_post.timestamp, "yyyy-mm-dd");
             li
-              i.icon-file
-              a(href="#{config.url}/#{recent_post.filename}")!= recent_post.title
+              a(href="#{config.url}/#{recent_post.filename}")
+                i.icon-file
+                |#{recent_post.title}
 nav.span3#archives
   div.paper
     div

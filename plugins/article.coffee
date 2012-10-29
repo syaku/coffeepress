@@ -17,6 +17,7 @@ class ArticlePlugin
     category = path.relative(@config.dirs.data, dir).replace '\\', '/'
     ext = path.extname(file)
     filename = "#{path.join(category, path.basename(file, ext))}.html"
+    filename = filename.replace '\\', '/'
     article = 
       title:title
       content:content

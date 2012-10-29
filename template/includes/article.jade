@@ -15,10 +15,12 @@ article.row-fluid
         //zenback_title_end
       footer
         span Category : 
-        span= article.category
+        if !article.category
+          span= config.categories.labels['uncategorized']
+        else
+          span= config.categories.labels[article.category] ? config.categories.labels[article.category] : article.category
     //zenback_body_begin
     div.article-content!= article.content
     //zenback_body_end
-    article.row-fluid.hidden-phone
-      h2.hide Comment
+    div.hidden-phone
       include zenback

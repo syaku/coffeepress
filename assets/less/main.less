@@ -15,7 +15,21 @@ article {
   }
 }
 
+aside#navigation {
+  ul {
+    li {
+      a {
+        display:block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow:ellipsis;
+      }
+    }
+  }
+}
+
 @media (min-width: 980px) {
+
   #articles {
     margin-bottom: 32px;
   }
@@ -79,7 +93,16 @@ article {
 }
 
 /* Landscape phone to portrait tablet */
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+}
+
+/* Landscape phone to portrait tablet */
 @media (min-width: 768px) {
+
   .timestamp {
     text-shadow: 1px 1px 3px #aaa;
     text-align:right;
@@ -113,6 +136,12 @@ article {
 /* Landscape phones and down */
 @media (max-width: 480px) {
 
+  body {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+
   h2 {
     font-size:12px;
     padding-left:1em;
@@ -128,6 +157,9 @@ article {
     h2 {
       border:none;
       border-top:1px solid #ddd;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     div.span10 {
@@ -138,6 +170,12 @@ article {
 
     h3{
       font-size:14px;
+      a {
+        display:block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
       padding:0px;
       margin:0px;
     }
@@ -173,3 +211,11 @@ article {
   }
 }
 
+@media (min-width: 980px) {
+
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+
+}

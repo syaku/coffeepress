@@ -15,9 +15,14 @@ module.exports =
     site.categories = {}
     for article in site.articles
       if article.category? && article.category.length > 0
-        if !site.categories[article.category]?
-          site.categories[article.category] = []
-        site.categories[article.category].push article
+        category = article.category
+      else
+        category = 'uncategorized'
+      while category != '.'
+        if !site.categories[category]?
+          site.categories[category] = []
+        site.categories[category].push article
+        category = path.dirname category
 
   layout: (site, config)->
     for category, articles of site.categories

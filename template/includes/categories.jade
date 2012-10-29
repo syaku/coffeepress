@@ -4,5 +4,6 @@ ul.unstyled
   for category in categories
     - var label = config.categories.labels[category] ? config.categories.labels[category] : category;
     li
-      i.icon-tag
-      a(href="#{config.url}/#{category}/")!= label
+      a(href="#{config.url}/#{category}/")
+        i.icon-tag
+        |#{label}(#{site.categories[category].length})
