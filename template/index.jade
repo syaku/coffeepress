@@ -2,14 +2,11 @@ extends layout
 
 block page-header
   hgroup.hidden-phone.page-header
-    h1!=config.title
+    h1!=title
 
 block content
   section#articles
     - var lastDate = ''
-    - var items = site.articles;
-    - var cnt = site.articles.length;
-    - if (cnt > 4) items = items.slice(0, 5);
     for article in items
       - var dateString = dateFormat(article.timestamp, 'yyyy-mm-dd');
       div.row-fluid
@@ -19,3 +16,4 @@ block content
             h2.timestamp= dateString
         div.span10
           include includes/article_summary
+    include plugins/pagination

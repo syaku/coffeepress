@@ -4,7 +4,6 @@ jade = require "jade"
 
 class Layout
   constructor: (@site, @config)->
-    @layoutIndex()
     for article in @site.articles
       @layoutArticle(article)
 
@@ -21,17 +20,6 @@ class Layout
           dateFormat: require "./dateformat"
           site:@site
           article: article
-          config:@config
-        }, (err) ->
-        throw err if err
-
-  layoutIndex: ->
-    fs.readFile "#{@config.dirs.template}/index.jade", (err, data) =>
-      fn = jade.compile data, {filename:"#{@config.dirs.template}/layout.jade"}
-      fs.writeFile "#{@config.dirs.public}/index.html",
-        fn {
-          dateFormat: require "./dateformat"
-          site:@site
           config:@config
         }, (err) ->
         throw err if err

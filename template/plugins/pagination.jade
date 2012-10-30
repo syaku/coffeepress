@@ -1,0 +1,21 @@
+div.pagination.pagination-centered
+  ul
+    if currentPage == 1
+      li.disabled
+        a &laquo;
+    else
+      li
+        a(href="index#{currentPage == 2 ? '' : currentPage - 1}.html") &laquo;
+    for index in pagination
+      if currentPage == index
+        li.active
+          a= index
+      else
+        li
+          a(href="index#{1 < index ? index : ''}.html")= index
+    if currentPage == pagination.length
+      li.disabled
+        a &raquo;
+    else
+      li
+        a(href="index#{currentPage+1}.html") &raquo;
