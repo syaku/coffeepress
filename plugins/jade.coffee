@@ -1,6 +1,6 @@
 jade = require "jade"
 fs = require "fs"
 
-module.exports = (content)->
+module.exports = (content, config)->
   fn = jade.compile content
-  return fn {}, (err)->throw err if err
+  return fn {config:config}, (err)->throw err if err

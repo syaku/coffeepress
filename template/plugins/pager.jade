@@ -1,8 +1,8 @@
 ul.pager(style="padding-top:16px;border-top:1px solid gray;")
   if article.prev
     li.previous
-      a(href=article.prev.filename) &larr; #{article.prev.title}
+      a(href="#{config.url}/#{article.prev.filename}") &larr; #{article.prev.title}
   if article.next
     li.next
-      a(href=article.next.filename) #{article.next.title} &rarr;
+      a(href="#{config.url}/#{article.next.filename}") #{article.next.title} &rarr;
 
