@@ -23,7 +23,6 @@ module.exports =
           dateFormat: require "./dateformat"
           site:site
           config:config
-          title: config.title
           items: site.articles[5*(current-1)..5*(current-1)+4]
           currentPage: current
           pagination:[1..maxPages]

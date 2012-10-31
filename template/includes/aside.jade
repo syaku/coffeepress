@@ -1,31 +1,18 @@
-nav.span3#recentPosts
-  div.paper
-    div
-      hgroup
-        h2 Recent Posts
-      div.content
-        ul.unstyled
-          for recent_post in site.recent_posts
-            - var dateString = dateFormat(recent_post.timestamp, "yyyy-mm-dd");
-            li
-              a(href="#{config.url}/#{recent_post.filename}")
-                i.icon-file
-                |#{recent_post.title}
-nav.span3#archives
+nav.span4#archives
   div.paper
     div
       hgroup
         h2 Archives
       div.content
         include archives
-nav.span3#categories
+nav.span4#categories
   div.paper
     div
       hgroup
         h2 Categories
       div.content
         include categories
-nav.span3#aboutMe
+nav.span4#aboutMe
   address.paper
     div
       hgroup

@@ -2,7 +2,13 @@ extends layout
 
 block page-header
   hgroup.hidden-phone.page-header
-    h1!=title
+    if typeof(title) != 'undefined'
+      h1
+        if typeof(subtitle) != 'undefined' 
+          small #{subtitle}:
+        |#{title}
+    else
+      h1 SEVENSPIRALS
 
 block content
   section#articles
@@ -10,10 +16,13 @@ block content
     for article in items
       - var dateString = dateFormat(article.timestamp, 'yyyy-mm-dd');
       div.row-fluid
-        div.span2
-          if lastDate != dateString
+        if lastDate != dateString
+          div.span2
             - lastDate = dateString
             h2.timestamp= dateString
+        else
+          div.span2.hidden-phone
         div.span10
           include includes/article_summary
+  if currentPage
     include plugins/pagination

@@ -18,14 +18,16 @@ module.exports =
 
   layout: (site, config)->
     for key, value of site.archives
-      data = fs.readFileSync "#{config.dirs.template}/archives.jade", "utf-8"
+      data = fs.readFileSync "#{config.dirs.template}/index.jade", "utf-8"
       fn = jade.compile data, {filename:"#{config.dirs.template}/layout.jade"}
       fs.writeFile "#{config.dirs.public}/#{key}.html",
         fn {
           dateFormat: require "./dateformat"
           title: key
+          subtitle: 'Archive'
           site: site
-          key: key
+          items: site.archives[key]
+          currentPage: null
           config:config
         }, (err) =>
           throw err if err

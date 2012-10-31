@@ -28,7 +28,7 @@ module.exports =
     for category, articles of site.categories
       label = if config.categories.labels[category]? then config.categories.labels[category] else category
 
-      data = fs.readFileSync "#{config.dirs.template}/category.jade", "utf-8"
+      data = fs.readFileSync "#{config.dirs.template}/index.jade", "utf-8"
       fn = jade.compile data, {filename:"#{config.dirs.template}/layout.jade"}
       
       dirname = path.join config.dirs.public, category
@@ -39,8 +39,10 @@ module.exports =
         fn {
           dateFormat: require "dateformat"
           title: label
+          subtitle: 'Category'
           site: site
-          articles: articles
+          items: articles
+          currentPage: null
           config:config
         }, (err) =>
           throw err if err
