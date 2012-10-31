@@ -8,6 +8,7 @@
     ,"node-markdown": ">= 0.0.1"
     ,"dateformat": ">= 0.0.1"
     ,"opts": ">= 0.0.1"
+    ,"underscore": "*"
   }
   ,"scripts": {
     "update": "coffee coffeepress.coffee -u"

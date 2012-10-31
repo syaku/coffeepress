@@ -11,6 +11,9 @@ config/default.coffee
 config/default.json
 config/runtime.json
 
+data/*
+public/*
+
 pids
 logs
 results
