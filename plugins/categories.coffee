@@ -29,7 +29,7 @@ module.exports =
       label = if config.categories.labels[category]? then config.categories.labels[category] else category
 
       data = fs.readFileSync "#{config.dirs.template}/index.jade", "utf-8"
-      fn = jade.compile data, {filename:"#{config.dirs.template}/layout.jade"}
+      fn = jade.compile data, {filename:"#{config.dirs.template}/layout.jade", pretty:true}
       
       dirname = path.join config.dirs.public, category
   

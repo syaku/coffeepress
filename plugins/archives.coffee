@@ -19,7 +19,7 @@ module.exports =
   layout: (site, config)->
     for key, value of site.archives
       data = fs.readFileSync "#{config.dirs.template}/index.jade", "utf-8"
-      fn = jade.compile data, {filename:"#{config.dirs.template}/layout.jade"}
+      fn = jade.compile data, {filename:"#{config.dirs.template}/layout.jade", pretty:true}
       fs.writeFile "#{config.dirs.public}/#{key}.html",
         fn {
           dateFormat: require "./dateformat"

@@ -17,7 +17,7 @@ module.exports =
     maxPages = Math.ceil(site.articles.length / 5)
     for current in [1..maxPages]
       data = fs.readFileSync "#{config.dirs.template}/index.jade"
-      fn = jade.compile data, {filename:"#{config.dirs.template}/layout.jade"}
+      fn = jade.compile data, {filename:"#{config.dirs.template}/layout.jade", pretty:true}
       fs.writeFile "#{config.dirs.public}/index#{if 1 < current then current else ""}.html",
         fn {
           dateFormat: require "./dateformat"

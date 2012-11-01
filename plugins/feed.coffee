@@ -15,7 +15,7 @@ module.exports = (site, config)->
     }
 
   data = fs.readFileSync "#{config.dirs.template}/feed.jade", "utf-8"
-  fn = jade.compile data, {filename:"#{config.dirs.template}/feed.jade"}
+  fn = jade.compile data, {filename:"#{config.dirs.template}/feed.jade", pretty:true}
   fs.writeFile "#{config.dirs.public}/feed.rss",
     fn {
       site:site

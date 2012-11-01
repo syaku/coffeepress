@@ -12,14 +12,15 @@ nav.span4#categories
         h2 Categories
       div.content
         include categories
-nav.span4#aboutMe
-  address.paper
+nav.span4#profile
+  div.paper
     div
       hgroup
         h2 About Me
       div.content
-        p
-          img(style="width:100px;height:100px;", src=config.profile.image.url)#profile
-        p#displayName
-          a(href="http://gplus.to/syaku")!= config.profile.displayName
-        p#aboutMe!= config.profile.aboutMe
+        address
+          p
+            img(style="width:100px;height:100px;", src=config.profile.image.url, alt="avatar")#avatar
+          p#displayName
+            a(href="http://gplus.to/syaku")!= config.profile.displayName
+          p#aboutMe!= config.profile.aboutMe
