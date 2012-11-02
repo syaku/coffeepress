@@ -12,6 +12,14 @@ assets =
   img: "assets/img/"
   less : "assets/less/"
 
+mkdir = (dir)->
+  if fs.existsSync dir
+    return
+  else
+    if !fs.existsSync path.dirname dir
+      mkdir(path.dirname dir)
+    fs.mkdirSync dir
+
 readDir = (dir, callback) ->
   files = fs.readdirSync "#{dir}"
   for file in files
@@ -27,8 +35,7 @@ copyFiles = (from, to)->
     relPath = path.relative from, file
     targetPath = path.resolve "#{to}", relPath
     dirName = path.dirname targetPath
-    if !fs.existsSync dirName
-      fs.mkdirSync dirName
+    mkdir dirName
     exec "cp #{file} #{targetPath}", (err, stdout, stderr)->
       throw err if err
       console.log stdout+stderr

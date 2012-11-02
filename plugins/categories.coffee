@@ -32,7 +32,7 @@ module.exports =
       fn = jade.compile data, {filename:"#{config.dirs.template}/layout.jade", pretty:true}
       
       dirname = path.join config.dirs.public, category
-  
+
       mkdir(dirname)
 
       fs.writeFile "#{dirname}/index.html",
